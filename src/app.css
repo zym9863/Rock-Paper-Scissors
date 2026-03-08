@@ -1,30 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+
 :root {
-  --bg-primary: #f8f9fa;
-  --bg-secondary: #ffffff;
-  --bg-card: #ffffff;
-  --text-primary: #1a1a2e;
-  --text-secondary: #6c757d;
-  --accent: #6c63ff;
-  --accent-hover: #5a52d5;
-  --win-color: #28a745;
-  --lose-color: #dc3545;
-  --draw-color: #ffc107;
-  --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
-  --border-radius: 16px;
-  --transition: 0.3s ease;
+  --bg-primary: #fdf6ec;
+  --bg-secondary: #fffaf2;
+  --bg-card: #fffdf9;
+  --text-primary: #1f2430;
+  --text-secondary: #5f6470;
+  --accent: #f2663c;
+  --accent-hover: #df5430;
+  --accent-alt: #0f8b8d;
+  --outline: #f5d8c0;
+  --win-color: #0f8b57;
+  --lose-color: #d1495b;
+  --draw-color: #efb11d;
+  --shadow: 0 16px 40px rgba(31, 36, 48, 0.12);
+  --shadow-hover: 0 20px 48px rgba(31, 36, 48, 0.2);
+  --border-radius: 20px;
+  --transition: 260ms cubic-bezier(0.2, 0.7, 0.1, 1);
 }
 
 :root.dark {
-  --bg-primary: #0f0f23;
-  --bg-secondary: #1a1a2e;
-  --bg-card: #16213e;
-  --text-primary: #e0e0e0;
-  --text-secondary: #a0a0b0;
-  --accent: #7c73ff;
-  --accent-hover: #6c63ff;
-  --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.4);
+  --bg-primary: #0f172a;
+  --bg-secondary: #111c34;
+  --bg-card: #122039;
+  --text-primary: #e5ecf6;
+  --text-secondary: #9babc4;
+  --accent: #ff7a45;
+  --accent-hover: #ff6130;
+  --accent-alt: #24b8b8;
+  --outline: #233150;
+  --shadow: 0 18px 40px rgba(2, 8, 20, 0.45);
+  --shadow-hover: 0 24px 56px rgba(2, 8, 20, 0.58);
 }
 
 * {
@@ -33,16 +39,38 @@
   box-sizing: border-box;
 }
 
+html,
 body {
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-  background: var(--bg-primary);
+  min-height: 100%;
+}
+
+body {
+  font-family: 'Noto Sans SC', 'Manrope', sans-serif;
   color: var(--text-primary);
-  min-height: 100vh;
+  background:
+    radial-gradient(circle at 16% 12%, rgba(242, 102, 60, 0.2), transparent 34%),
+    radial-gradient(circle at 88% 18%, rgba(15, 139, 141, 0.2), transparent 40%),
+    linear-gradient(160deg, var(--bg-primary), var(--bg-secondary));
   transition: background var(--transition), color var(--transition);
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.3;
+  background-image: linear-gradient(
+      to right,
+      rgba(127, 127, 127, 0.06) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(127, 127, 127, 0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+  z-index: -1;
 }
 
 #app {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
+  min-height: 100vh;
 }

@@ -30,42 +30,51 @@
     </div>
   </div>
   <div class="score-footer">
-    <span class="win-rate">胜率: {winRate}%</span>
+    <span class="win-rate">胜率 {winRate}%</span>
     <button class="reset-btn" onclick={onReset}>重置</button>
   </div>
 </div>
 
 <style>
   .scoreboard {
-    background: var(--bg-card);
-    border-radius: var(--border-radius);
-    padding: 1.25rem;
+    background: color-mix(in srgb, var(--bg-card) 86%, transparent);
+    border-radius: calc(var(--border-radius) - 2px);
+    padding: 1rem;
+    border: 1px solid var(--outline);
     box-shadow: var(--shadow);
-    margin-bottom: 2rem;
+    margin-bottom: 1.25rem;
   }
 
   .scores {
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
     text-align: center;
   }
 
   .score-item {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: 0.15rem;
+    border: 1px solid var(--outline);
+    border-radius: 14px;
+    padding: 0.75rem 0.2rem;
+    background: color-mix(in srgb, var(--bg-secondary) 75%, transparent);
   }
 
   .score-value {
-    font-size: 2rem;
-    font-weight: 700;
+    font-size: clamp(1.7rem, 3vw, 2.1rem);
+    font-weight: 900;
+    line-height: 1;
+    font-family: 'Manrope', sans-serif;
   }
 
   .score-label {
-    font-size: 0.85rem;
+    font-size: 0.76rem;
     color: var(--text-secondary);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.18em;
+    font-weight: 800;
   }
 
   .win .score-value { color: var(--win-color); }
@@ -76,29 +85,45 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 1rem;
+    margin-top: 0.8rem;
     padding-top: 0.75rem;
-    border-top: 1px solid var(--bg-primary);
+    border-top: 1px dashed var(--outline);
   }
 
   .win-rate {
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     color: var(--text-secondary);
+    letter-spacing: 0.04em;
+    font-weight: 700;
   }
 
   .reset-btn {
-    background: none;
-    border: 1px solid var(--text-secondary);
-    border-radius: 8px;
-    color: var(--text-secondary);
-    padding: 0.3rem 0.8rem;
-    font-size: 0.8rem;
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent) 62%, transparent);
+    border-radius: 10px;
+    color: var(--accent-hover);
+    padding: 0.38rem 0.85rem;
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     cursor: pointer;
-    transition: all var(--transition);
+    transition: transform var(--transition), filter var(--transition), border-color var(--transition);
   }
 
   .reset-btn:hover {
+    transform: translateY(-1px);
     border-color: var(--accent);
-    color: var(--accent);
+    filter: saturate(112%);
+  }
+
+  @media (max-width: 640px) {
+    .score-item {
+      padding: 0.62rem 0.1rem;
+    }
+
+    .win-rate {
+      font-size: 0.82rem;
+    }
   }
 </style>

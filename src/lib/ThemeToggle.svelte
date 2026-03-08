@@ -17,30 +17,49 @@
 </script>
 
 <button class="theme-toggle" onclick={toggle} aria-label="Toggle theme">
-  {dark ? '☀️' : '🌙'}
+  <span>{dark ? 'SUN' : 'MOON'}</span>
 </button>
 
 <style>
   .theme-toggle {
     position: fixed;
-    top: 1rem;
-    right: 1rem;
-    background: var(--bg-card);
-    border: none;
-    border-radius: 50%;
-    width: 44px;
-    height: 44px;
-    font-size: 1.3rem;
+    top: 1.2rem;
+    right: 1.2rem;
+    background: color-mix(in srgb, var(--bg-card) 78%, transparent);
+    border: 1px solid var(--outline);
+    border-radius: 999px;
+    width: 78px;
+    height: 38px;
     cursor: pointer;
     box-shadow: var(--shadow);
-    transition: transform var(--transition), box-shadow var(--transition);
+    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
     display: flex;
     align-items: center;
     justify-content: center;
+    backdrop-filter: blur(8px);
+    z-index: 40;
+  }
+
+  .theme-toggle span {
+    font-family: 'Manrope', sans-serif;
+    letter-spacing: 0.13em;
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: var(--text-secondary);
   }
 
   .theme-toggle:hover {
-    transform: scale(1.1);
+    transform: translateY(-1px);
+    border-color: color-mix(in srgb, var(--accent) 52%, var(--outline));
     box-shadow: var(--shadow-hover);
+  }
+
+  @media (max-width: 640px) {
+    .theme-toggle {
+      top: 0.7rem;
+      right: 0.7rem;
+      width: 72px;
+      height: 34px;
+    }
   }
 </style>
