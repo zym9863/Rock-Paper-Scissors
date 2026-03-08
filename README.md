@@ -1,47 +1,82 @@
-# Svelte + TS + Vite
+[English](./README-EN.md) | [中文](./README.md)
 
-This template should help get you started developing with Svelte and TypeScript in Vite.
+# 剪刀石头布
 
-## Recommended IDE Setup
+一个美观且有趣的剪刀石头布网页游戏，使用 Svelte 5 + TypeScript + Vite 构建。
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
+![剪刀石头布](https://img.shields.io/badge/Svelte-5-FF3E00?style=for-the-badge&logo=svelte)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?style=for-the-badge&logo=typescript)
+![Vite](https://img.shields.io/badge/Vite-8-646CFF?style=for-the-badge&logo=vite)
 
-## Need an official Svelte framework?
+## 功能特性
 
-Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
+- 🎮 **经典玩法** - 剪刀、石头、布，三种选择
+- 📊 **分数记录** - 自动保存胜负平记录到 localStorage
+- 🔊 **音效反馈** - 出拳、胜利、失败、平局各有独特音效
+- 🎨 **精美动画** - 流畅的过渡动画和交互效果
+- 🌓 **主题切换** - 支持明暗主题切换
+- 📱 **响应式设计** - 完美适配桌面和移动设备
 
-## Technical considerations
+## 技术栈
 
-**Why use this over SvelteKit?**
+- **Svelte 5** - 渐进式前端框架
+- **TypeScript** - 类型安全的 JavaScript 超集
+- **Vite** - 下一代前端构建工具
+- **Vitest** - 快速单元测试框架
 
-- It brings its own routing solution which might not be preferable for some users.
-- It is first and foremost a framework that just happens to use Vite under the hood, not a Vite app.
+## 快速开始
 
-This template contains as little as possible to get started with Vite + TypeScript + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-vite` templates and is a good starting point for beginners dipping their toes into a Vite + Svelte project.
+### 安装依赖
 
-Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
-
-**Why `global.d.ts` instead of `compilerOptions.types` inside `jsconfig.json` or `tsconfig.json`?**
-
-Setting `compilerOptions.types` shuts out all other types not explicitly listed in the configuration. Using triple-slash references keeps the default TypeScript setting of accepting type information from the entire workspace, while also adding `svelte` and `vite/client` type information.
-
-**Why include `.vscode/extensions.json`?**
-
-Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
-
-**Why enable `allowJs` in the TS template?**
-
-While `allowJs: false` would indeed prevent the use of `.js` files in the project, it does not prevent the use of JavaScript syntax in `.svelte` files. In addition, it would force `checkJs: false`, bringing the worst of both worlds: not being able to guarantee the entire codebase is TypeScript, and also having worse typechecking for the existing JavaScript. In addition, there are valid use cases in which a mixed codebase may be relevant.
-
-**Why is HMR not preserving my local component state?**
-
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/rixo/svelte-hmr#svelte-hmr).
-
-If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
-
-```ts
-// store.ts
-// An extremely simple external store
-import { writable } from 'svelte/store'
-export default writable(0)
+```bash
+pnpm install
 ```
+
+### 开发模式
+
+```bash
+pnpm dev
+```
+
+启动开发服务器，访问 http://localhost:5173
+
+### 构建生产版本
+
+```bash
+pnpm build
+```
+
+### 运行测试
+
+```bash
+pnpm test        # 运行一次测试
+pnpm test:watch  # 监听模式
+```
+
+## 项目结构
+
+```
+src/
+├── lib/
+│   ├── Game.svelte       # 游戏主组件
+│   ├── gameLogic.ts      # 游戏逻辑
+│   ├── Scoreboard.svelte # 记分板组件
+│   ├── sounds.ts         # 音效模块
+│   ├── ThemeToggle.svelte# 主题切换组件
+│   └── __tests__/
+│       └── gameLogic.test.ts # 游戏逻辑测试
+├── App.svelte            # 应用入口
+├── app.css               # 全局样式
+└── main.ts               # 入口文件
+```
+
+## 游戏规则
+
+- ✊ 石头 胜 ✌️ 剪刀
+- 🖐️ 布 胜 ✊ 石头
+- ✌️ 剪刀 胜 🖐️ 布
+- 相同选择为平局
+
+## 许可证
+
+MIT License
